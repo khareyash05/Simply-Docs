@@ -24,7 +24,7 @@ export default function TextEditor() {
   const [quill, setQuill] = useState()
 
   useEffect(() => {
-    const s = io("https://serene-cliffs-46591.herokuapp.com/documents/")
+    const s = io("/")
     setSocket(s)
 
     return () => {
