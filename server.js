@@ -52,7 +52,7 @@ async function findOrCreateDocument(id) {
   if (document) return document
   return await Document.create({ _id: id, data: defaultValue })
 }
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 443
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))
 }
