@@ -25,6 +25,8 @@ const io = require('socket.io')(server, {
     }
     })
 
+const path = require("path")
+app.use(express.static(path.join(__dirname, "client", "build")))
 const defaultValue = ""
 
 io.on("connection", socket => {
@@ -54,6 +56,9 @@ const PORT = process.env.PORT || 3001
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))
 }
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
